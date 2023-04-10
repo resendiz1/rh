@@ -3,12 +3,13 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Mail\Attachment;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Attachment;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class Correo extends Mailable
 {
@@ -61,12 +62,21 @@ class Correo extends Mailable
      *
      * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
-    public function attachments($curriculum): array
+    public function attachments(): array
     {
-        $this->curriculum = $curriculum;
+
+
+        //Esta linea la puse por que no sabia como mandar a llamar la URL generada por el STORAGE y pos lo hice con una consulta directa a la BD 
+        $curriculum = DB::select("SELECT*FROM datos ORDER BY created_at DESC LIMIT 1");
+          
+
+
+
         return [
-            Attachment::fromStorage($curriculum)
+            Attachment::fromStorage(strval($curriculum[0]->curriculum))
                         ->as('Curriculum Vitae')
+                   
+                    
         ];
     }
 }

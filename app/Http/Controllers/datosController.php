@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\Correo;
 use Exception;
+use App\Mail\Correo;
 use App\Models\Dato;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class datosController extends Controller
@@ -13,6 +14,10 @@ class datosController extends Controller
 
     public function post(){
         
+
+         
+
+
         //Moviendo el archivo a la carpeta de laravel para despues mandarlo como adjunto
         $curriculum = request()->file('curriculum')->store('Public');
         
