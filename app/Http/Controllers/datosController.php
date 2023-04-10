@@ -40,13 +40,21 @@ class datosController extends Controller
         $datos['curriculum'] = $curriculum;
 
 
+        try{
+
+            Mail::to('arturo.resendiz@grupopabsa.com')
+                ->cc('rh.auxiliar@grupopabsa.com')
+                ->bcc('resendiz.galleta@gmail.com')
+                ->send(new Correo($datos['nombre'], $datos['telefono'], $datos['email'], $datos['edad'], $datos['escolaridad'], $curriculum));    
+
+                return back()->with('enviado', 'Tu candidatura fue enviada');
+
+        }catch(Exception $ex){
+            return $ex;
+        }
+
         
         //Configurando las cosas que haran que se mande el correo
-        Mail::to('arturo.resendiz@grupopabsa.com')
-            ->cc('rh.auxiliar@grupopabsa.com')
-            ->bcc('resendiz.galleta@gmail.com')
-            ->send(new Correo($datos['nombre'], $datos['telefono'], $datos['email'], $datos['edad'], $datos['escolaridad'], $curriculum));
-        
 
     }
 } 

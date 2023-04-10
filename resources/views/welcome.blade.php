@@ -33,6 +33,12 @@ rel="stylesheet"
                 </div>
                 <div class="col-12 text-center mt-4">
                     <h1>Aplicación RH</h1>
+                    @if (session('enviado'))
+                    <div class="alert alert-success alert-sm h3">
+                        {{session('enviado')}}
+                    </div>
+                        
+                    @endif
                 </div>
             <form action="{{route('rh')}}" enctype="multipart/form-data" method="POST">
                 @csrf
@@ -42,35 +48,35 @@ rel="stylesheet"
                             Nombre Completo:
                         </div>
                         <div class="col-12 ">
-                            <input type="text" name="nombre" class="form-control p-2">
+                            <input type="text" name="nombre" class="form-control p-2" required>
                         </div>
 
                         <div class="col-12  h5 mt-4">
                             Teléfono:
                         </div>
                         <div class="col-12 ">
-                            <input type="text" name="telefono" class="form-control p-2">
+                            <input type="text" name="telefono" class="form-control p-2" required>
                         </div>
 
                         <div class="col-12  h5 mt-4">
                             Correo Eléctronico:
                         </div>
                         <div class="col-12 ">
-                            <input type="text" name="email" class="form-control p-2">
+                            <input type="text" name="email" class="form-control p-2" required>
                         </div>
 
                         <div class="col-12 h5 mt-4">
                             Edad:
                         </div>
                         <div class="col-12">
-                            <input type="number" class="form-control p-2" name="edad" id="">
+                            <input type="number" class="form-control p-2" name="edad" id="" required>
                         </div>
 
                         <div class="col-12 h5 mt-4">
                             Escolaridad:
                         </div>
                         <div class="col-12">
-                            <input type="text" class="form-control p-2" name="escolaridad">
+                            <input type="text" class="form-control p-2" name="escolaridad" required>
                         </div>
 
 
@@ -78,7 +84,7 @@ rel="stylesheet"
                             Curriculum Vitae
                         </div>
                         <div class="col-12">
-                            <input type="file" accept=".docx, .pdf, .doc" name="curriculum" class="form-control">
+                            <input type="file" accept=".docx, .pdf, .doc" name="curriculum" class="form-control" required>
                         </div>
 
 

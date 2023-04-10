@@ -32,7 +32,7 @@
 
 
     <p style="width: 690px; position: absolute; top:45%; left:3%">{{$edad}}</p>
-    <span>{{$curriculum}}</span>
+
     
   </div>
 
