@@ -29,7 +29,9 @@ rel="stylesheet"
         <div class="col-sm-12 col-lg-6 row shadow-sm">
             <div class="row justify-content-center">
                 <div class="col-12 text-center">
-                    <img src="../../img/logo.png" class="img-fluid" alt="">
+                    <a href="https://www.grupopabsa.com">
+                        <img src="../../img/logo.png" class="img-fluid" alt="">
+                    </a>
                 </div>
                 <div class="col-12 text-center mt-4">
                     <h1>Aplicación RH</h1>
